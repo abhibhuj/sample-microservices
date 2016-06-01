@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create table: option" author="abhi">
+        <createTable tableName="option">
+            <column name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="name" type="varchar(256)"/>
+            <column name="is_default" type="boolean" defaultValueBoolean="false"/>
+            <column name="created_by" type="varchar(50)" />
+            <column name="date_created" type="TIMESTAMP WITH TIMEZONE" />
+            <column name="updated_by" type="varchar(50)"/>
+            <column name="date_updated" type="TIMESTAMP WITH TIMEZONE" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: question_option" author="abhi">
+        <createTable tableName="question_option">
+            <column name="question_id" type="bigint"/>
+            <column name="option_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: question" author="abhi">
+        <createTable tableName="question">
+            <column name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="name" type="varchar(256)"/>
+            <column name="question_type" type="varchar(20)"/>
+            <column name="created_by" type="varchar(50)" />
+            <column name="date_created" type="TIMESTAMP WITH TIMEZONE" />
+            <column name="updated_by" type="varchar(50)"/>
+            <column name="date_updated" type="TIMESTAMP WITH TIMEZONE" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: service_question" author="abhi">
+        <createTable tableName="service_question">
+            <column name="service_id" type="bigint"/>
+            <column name="question_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: service" author="abhi">
+        <createTable tableName="service">
+            <column name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="name" type="varchar(256)"/>
+            <column name="created_by" type="varchar(50)" />
+            <column name="date_created" type="TIMESTAMP WITH TIMEZONE" />
+            <column name="updated_by" type="varchar(50)"/>
+            <column name="date_updated" type="TIMESTAMP WITH TIMEZONE" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: vendor_service" author="abhi">
+        <createTable tableName="vendor_service">
+            <column name="vendor_id" type="bigint"/>
+            <column name="service_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create table: vendor" author="abhi">
+        <createTable tableName="vendor">
+            <column name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" unique="true"/>
+            </column>
+            <column name="name" type="varchar(256)"/>
+            <column name="service_areas" type="text"/>
+            <column name="created_by" type="varchar(50)" />
+            <column name="date_created" type="TIMESTAMP WITH TIMEZONE" />
+            <column name="updated_by" type="varchar(50)"/>
+            <column name="date_updated" type="TIMESTAMP WITH TIMEZONE" />
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
